@@ -4,7 +4,9 @@
             <x-jet-authentication-card-logo />
         </x-slot>
 
+        <h5 style="text-align:center; padding: 10px; font-weight: bold"> PLEASE LOGIN TO RESOURCE </h5>
         <x-jet-validation-errors class="mb-4" />
+
 
         @if (session('status'))
             <div class="mb-4 font-medium text-sm text-green-600">
@@ -32,17 +34,27 @@
                 </label>
             </div>
 
-            <div class="flex items-center justify-end mt-4">
-                @if (Route::has('password.request'))
-                    <a class="underline text-sm text-gray-600 hover:text-gray-900" href="{{ route('password.request') }}">
-                        {{ __('Forgot your password?') }}
-                    </a>
-                @endif
-
+            <div class="flex mt-4">
                 <x-jet-button class="ml-4">
                     {{ __('Login') }}
                 </x-jet-button>
             </div>
+
+            <div class="flex mt-5">
+                <div class="mr-3">
+                    @if (Route::has('password.request'))
+                        <a class="underline text-sm text-gray-600 hover:text-gray-900" href="{{ route('password.request') }}">
+                            {{ __('Forgot your password?') }}
+                        </a>
+                    @endif
+                </div>
+                
+                <div>
+                    <a class="underline text-sm text-gray-600 hover:text-gray-900" href="{{ route('register') }}">
+                        {{ __('Not yet a member on resource?') }}
+                    </a>
+                <div>
+            </div> 
         </form>
     </x-jet-authentication-card>
 </x-guest-layout>
