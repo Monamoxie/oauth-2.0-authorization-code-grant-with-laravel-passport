@@ -22,14 +22,6 @@
             </div>
 
             <div class="mt-4">
-                <label class="block font-medium text-sm text-gray-700">
-                    Callback URL
-                </label>
-                <p style="color:#900"> <small> Only enter this if you are registering as a client on this resource </small>  </p>
-                 <x-jet-input class="block mt-1 w-full" type="text" name="callback" :value="old('callback')" autocomplete="callback" />
-            </div>
-
-            <div class="mt-4">
                 <x-jet-label value="{{ __('Name') }}" />
                 <x-jet-input class="block mt-1 w-full" type="text" name="name" :value="old('name')" required autofocus autocomplete="name" />
             </div>
