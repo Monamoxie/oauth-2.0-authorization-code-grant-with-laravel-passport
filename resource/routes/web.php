@@ -17,6 +17,9 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
-    return view('dashboard');
-})->name('dashboard');
+Route::middleware(['auth:sanctum', 'verified'])
+->get('/dashboard', [App\Http\Controllers\DashboardController::class, 'index'])
+->name('dashboard');
+
+Route::middleware(['auth:sanctum', 'verified'])
+->get('/posts/create', [App\Http\Controllers\PostsController::class, 'store']);
