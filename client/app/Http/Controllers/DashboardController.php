@@ -24,8 +24,7 @@ class DashboardController extends Controller
             
             if($resourceResponse->status() === 200) {
                 $userPosts = $resourceResponse->json();
-            }
-            // dd($userPosts);
+            } 
             
         }
 
