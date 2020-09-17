@@ -5,7 +5,7 @@
 </style>
 
 <template>
-    <div style="border: 2px solid red">
+    <div>
         <div v-if="tokens.length > 0">
             <div class="card card-default">
                 <div class="card-header">Authorized Credentials</div>
@@ -88,9 +88,9 @@
              */
             getTokens() {
                 axios.get('/oauth/tokens')
-                        .then(response => {
-                            this.tokens = response.data;
-                        });
+                .then(response => {
+                    this.tokens = response.data;
+                });
             },
 
             /**

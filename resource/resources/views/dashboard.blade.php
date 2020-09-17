@@ -33,7 +33,7 @@
                                 </div>
                             @else
                                 <div class="bg-green-100 border border-green-400 text-green-700 px-3 py-3 rounded relative uppercase" role="alert">
-                                    <h2 class="font-bold items-center text-xl"> Your Resources! </h2>  
+                                    <h2 class="font-bold items-center text-xl"> Your Resources! </h2> 
                                 </div>
                             @endif
 
@@ -69,11 +69,17 @@
                             @endforeach
                         @endif
                     </div>
+
+                    <div class="bg-gray-200 bg-opacity-25 pt-5 pb-5">
+                        <div id="credentials" style="margin: auto; width: 600px; max-width: 100%;">
+                            <h4 class="font-bold items-center text-xl"> Applications you authorized to access your account on your behalf </h4>     
+                            <passport-authorized-clients></passport-authorized-clients> 
+                        </div>
+                    </div>
                 @elseif ($userType === 'client')
                     <div class="bg-gray-200 bg-opacity-25 pt-5 pb-5">
                         <div id="credentials" style="margin: auto; width: 600px; max-width: 100%;">
                             <passport-clients></passport-clients>
-                            <passport-authorized-clients></passport-authorized-clients>
                         </div>
                     </div>
                 @endif 
