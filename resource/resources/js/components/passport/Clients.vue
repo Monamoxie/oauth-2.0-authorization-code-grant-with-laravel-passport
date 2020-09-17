@@ -145,10 +145,6 @@
                         </form>
                     </div>
 
-                    <!-- Modal Actions 
-                        ID: 918c8e00-cbbd-4b2f-90c1-767b359eba54
-                        Secret: bNBJlEoO7YBh68OHHJbDKdT7tekhIljMpIyNfpUg
-                    -->
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
 
