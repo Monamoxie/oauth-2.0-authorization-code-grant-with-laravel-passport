@@ -42,7 +42,7 @@ return [
         ],
 
         'api' => [
-            'driver' => 'laravel',
+            'driver' => 'passport',
             'provider' => 'users',
             'hash' => false,
         ],
