@@ -1,17 +1,4 @@
-<div class="p-6 sm:px-20 bg-white border-b border-gray-200">
 
-    <div class="mt-8 text-2xl">
-        Welcome to your Client side application!
-    </div>
-
-    <div class="mt-6 text-gray-500">
-        <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative" role="alert">
-            Ooops!!! No resource information is here. 
-        </div>
-        <p class="pt-3 pb-3"> We need to pull your resources and posts from the "Resource" server. Kindly approve request </p>
-       <p class="pt-4 pb-3"><button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Approve Request</button></p>
-    </div>
-</div>
 {{-- 
 <div class="bg-gray-200 bg-opacity-25 grid grid-cols-1 md:grid-cols-2">
     <div class="p-6">
