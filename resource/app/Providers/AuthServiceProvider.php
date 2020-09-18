@@ -38,5 +38,7 @@ class AuthServiceProvider extends ServiceProvider
             'view-users' => 'View a list of all the users on the resource'
         ]);
 
+        Passport::tokensExpireIn(now()->addDays(1));
+
     }
 }
