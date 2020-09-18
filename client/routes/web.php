@@ -29,3 +29,7 @@ Route::middleware(['auth:sanctum', 'verified'])
 ->get('/dashboard/oauth/callback', [App\Http\Controllers\DashboardController::class, 'requestCallback'])
 ->name('request_callback');
 
+Route::middleware(['auth:sanctum', 'verified'])
+->get('/dashboard/oauth/refresh', [App\Http\Controllers\DashboardController::class, 'refreshToken'])
+->name('refresh_token');
+

@@ -10,4 +10,9 @@ class UserOAuthToken extends Model
     use HasFactory;
 
     protected $guarded = [];
+
+    public function hasTokenExpired() 
+    {
+        return now()->gte($this->updated_at->addSeconds($this->expires_in));
+    }
 }

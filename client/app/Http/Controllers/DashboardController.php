@@ -17,6 +17,9 @@ class DashboardController extends Controller
         
         if($userToken !== null) {
             // make request to fetch posts with the token
+            if($request->user()->userOAuthToken->hasTokenExpired()) {
+                return redirect('/dashboard/oauth/refresh');
+            }
             $resourceResponse = Http::withHeaders([
                 'Accept' => 'application/json',
                 'Authorization' => 'Bearer '. $userToken->access_token
@@ -40,7 +43,7 @@ class DashboardController extends Controller
             'client_id' => env('CLIENT_ID'),
             'redirect_uri' => env('APP_URL') . 'dashboard/oauth/callback',
             'response_type' => 'code',
-            'scope' => 'view-posts view-users',
+            'scope' => 'view-posts',
             'state' => $sessionState,
         ]);
         return redirect(env('RESOURCE_APP_URL') . 'oauth/authorize?' . $query);
@@ -64,10 +67,36 @@ class DashboardController extends Controller
         }
         
         $request->user()->userOAuthToken()->create([
-            'access_token' => $resourceResponse->access_token
+            'access_token' => $resourceResponse->access_token,
+            'expires_in' => $resourceResponse->expires_in,
+            'refresh_token' => $resourceResponse->refresh_token
         ]);
 
         return redirect('/dashboard');
 
+    }
+
+    public function refreshToken(Request $request)
+    { 
+        $userToken = auth()->user()->userOAuthToken;
+       
+        $resourceResponse = Http::post(env('RESOURCE_APP_URL') . 'oauth/token', [
+            'grant_type' => 'refresh_token',
+            'refresh_token' => $userToken->refresh_token,
+            'client_id' => env('CLIENT_ID'),
+            'client_secret' => env('CLIENT_SECRET'),
+            'redirect_uri' => env('APP_URL') . 'dashboard/oauth/callback',
+            'scope' => 'view-posts'
+        ]); 
+
+        $resourceResponse = json_decode($resourceResponse->getBody());
+        
+        $request->user()->userOAuthToken()->update([
+            'access_token' => $resourceResponse->access_token,
+            'expires_in' => $resourceResponse->expires_in,
+            'refresh_token' => $resourceResponse->refresh_token
+        ]); 
+
+        return redirect('/dashboard');
     }
 }
