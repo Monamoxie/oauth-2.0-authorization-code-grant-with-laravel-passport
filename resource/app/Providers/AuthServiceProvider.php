@@ -27,5 +27,16 @@ class AuthServiceProvider extends ServiceProvider
         $this->registerPolicies();
 
         Passport::routes();
+
+        // By default, client should only be able to do this and nothing more, except explitly stated in the scopes param
+        Passport::setDefaultScope([
+            'view-posts'
+        ]);
+
+        Passport::tokensCan([
+            'view-posts' => 'View Article posts',
+            'view-users' => 'View a list of all the users on the resource'
+        ]);
+
     }
 }

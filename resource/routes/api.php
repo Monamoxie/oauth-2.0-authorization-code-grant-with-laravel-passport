@@ -14,9 +14,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
+Route::middleware(['auth:api', 'scope:view-users'])->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::middleware(['auth:api'])
+Route::middleware(['auth:api', 'scope:view-posts'])
 ->get('/user/resource/posts', [App\Http\Controllers\ApiPostsController::class, 'listResouceUserPosts']);
