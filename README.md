@@ -1,3 +1,5 @@
+![Logo](resource/resources/images/logo.png)
+
 ### OAuth 2.0 - Authorization Grant 
 
 # BRIEF OVERVIEW
