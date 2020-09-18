@@ -9,22 +9,22 @@ use Illuminate\Support\Str;
 class DashboardController extends Controller
 {
 
-    public function index()
+    public function index(Request $request)
     {
         // check if there's an access token for this user to fetch their posts from a resource server
         $userToken = auth()->user()->userOAuthToken;
         $userPosts = [];
-
+        
         if($userToken !== null) {
             // make request to fetch posts with the token
             $resourceResponse = Http::withHeaders([
                 'Accept' => 'application/json',
                 'Authorization' => 'Bearer '. $userToken->access_token
             ])->get(env('RESOURCE_APP_URL') . 'api/user/resource/posts');
-            
+             
             if($resourceResponse->status() === 200) {
                 $userPosts = $resourceResponse->json();
-            } 
+            }
             
         }
 
@@ -40,7 +40,7 @@ class DashboardController extends Controller
             'client_id' => env('CLIENT_ID'),
             'redirect_uri' => env('APP_URL') . 'dashboard/oauth/callback',
             'response_type' => 'code',
-            'scope' => '',
+            'scope' => 'view-posts view-users',
             'state' => $sessionState,
         ]);
         return redirect(env('RESOURCE_APP_URL') . 'oauth/authorize?' . $query);
