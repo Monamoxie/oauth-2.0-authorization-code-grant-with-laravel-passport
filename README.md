@@ -12,8 +12,8 @@ Primarily, it permits a client to access protected resources with the help of to
 With the League OAuth2 Server, there are basically 5 ways a token can be issued.
 
 1. Authorization code grant approach - further divided into
-   A. Standard Approach
-   B. PKCE Approach
+   - Standard Approach
+   - PKCE Approach
 2. Client credentials grant approach
 3. Implicit grant approach
 4. Resource owner password credentials grant approach
