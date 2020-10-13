@@ -24,7 +24,7 @@ For more on the terminologies and use case, you can check out it's documentation
 For this demo, I will be using the  Authorization code grant (Standard Approach). 
 
 ### THE FLOW
-![Flow Chart](resource/resources/images/flow-chart.png)
+![Flow Chart](resource/resources/images/code-flow-chart.png)
 
 ### USAGE 
 For Demo purposes only. Emphasis was not placed on security on my end.
